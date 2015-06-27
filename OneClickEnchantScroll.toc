@@ -1,0 +1,17 @@
+## Interface: 60200
+## Title: OneClickEnchantScroll
+## Notes: Create enchantment scrolls with just one single click
+## Notes-deDE: Erstellt mit einem einzigen Klick Verzauberungsrollen
+## Notes-frFR: Crée des parchemins d'enchantement par seule un clique
+## Notes-esES: Creado los pergaminos de encantamiento con un solo clic
+## Notes-esMX: Creado los pergaminos de encantamiento con un solo clic
+## Notes-ptPT: Criado pergaminhos de encantamento com um único clique
+## Notes-ptBR: Criado pergaminhos de encantamento com um único clique
+## Notes-itIT: Crea pergamene di incantamento con un solo click
+## Author: Sará.Festung der Stürme-EU <Sara#2672> <sarafdswow@gmail.com>
+
+## Version: 6.2.0.0
+## LoadOnDemand: 1
+## LoadWith: Blizzard_TradeSkillUI
+
+OCES.lua
