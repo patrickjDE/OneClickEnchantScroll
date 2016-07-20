@@ -35,18 +35,19 @@ elseif loc == "zhTW" then
 	TEXT = "卷軸"
 end
 
-local f=CreateFrame("Button","TradeSkillCreateScrollButton",TradeSkillFrame,"MagicButtonTemplate")
-f:SetPoint("TOPRIGHT",TradeSkillCreateButton,"TOPLEFT")
-f:SetScript("OnClick",function()
-	DoTradeSkill(TradeSkillFrame.selectedSkill)
+local f = CreateFrame("Button", "TradeSkillCreateScrollButton", TradeSkillFrame.DetailsFrame, "MagicButtonTemplate")
+f:SetPoint("TOPRIGHT", TradeSkillFrame.DetailsFrame.CreateButton, "TOPLEFT")
+f:SetScript("OnClick", function()
+	C_TradeSkillUI.CraftRecipe(TradeSkillFrame.DetailsFrame.selectedRecipeID, 0)
 	UseItemByName(38682)
 end)
 
 local function OCES_TradeSkillFrame_SetSelection(id)
-	local skillName,_,_,_,altVerb = GetTradeSkillInfo(id)
-	if IsTradeSkillGuild() or IsTradeSkillLinked() then
+	local skillName = C_TradeSkillUI.GetRecipeInfo(id).name
+	local serviceType = C_TradeSkillUI.GetRecipeInfo(id).type
+	if C_TradeSkillUI.IsTradeSkillGuild() or C_TradeSkillUI.IsTradeSkillLinked() then
 		f:Hide()
-	elseif (altVerb and CURRENT_TRADESKILL==VZ) then
+	elseif (serviceType and CURRENT_TRADESKILL==VZ) then
 		f:Show()
 		local creatable = 1
 		if not skillName then
@@ -57,8 +58,8 @@ local function OCES_TradeSkillFrame_SetSelection(id)
 		if scrollnum == 0 then
 			creatable = nil
 		end
-		for i=1,GetTradeSkillNumReagents(id) do
-			local _,_,reagentCount,playerReagentCount = GetTradeSkillReagentInfo(id,i)
+		for i = 1, C_TradeSkillUI.GetRecipeNumReagents(id) do
+			local _, _, reagentCount, playerReagentCount = C_TradeSkillUI.GetRecipeReagentInfo(id, i)
 			if playerReagentCount < reagentCount then
 				creatable = nil
 			end
@@ -73,4 +74,4 @@ local function OCES_TradeSkillFrame_SetSelection(id)
 	end
 end
 
-hooksecurefunc("TradeSkillFrame_SetSelection", OCES_TradeSkillFrame_SetSelection);
+hooksecurefunc(TradeSkillRecipeButtonMixin, "SetSelected", OCES_TradeSkillFrame_SetSelection);
