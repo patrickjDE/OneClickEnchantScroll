@@ -1,4 +1,4 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: OneClickEnchantScroll
 ## Notes: Create enchantment scrolls with just one single click
 ## Notes-deDE: Erstellt mit einem einzigen Klick Verzauberungsrollen
@@ -10,7 +10,7 @@
 ## Notes-itIT: Crea pergamene di incantamento con un solo click
 ## Author: Sará.Festung der Stürme-EU <Sara#2672> <sarafdswow@gmail.com>
 
-## Version: 7.0.3.0
+## Version: 7.1.0.0
 ## LoadOnDemand: 1
 ## LoadWith: Blizzard_TradeSkillUI
 
