@@ -1,6 +1,9 @@
 # Notepad++ backup Files
 /nppBackup/
 
+# Zip archives for distribution
+*.zip
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

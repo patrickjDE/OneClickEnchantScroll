@@ -1,5 +1,5 @@
 --[[
-	OneClickEnchantScroll v7.0.3.0 (r17)
+	OneClickEnchantScroll v7.1.0.0 (r18)
 	Copyright (c) 2010-2016, All rights reserved.
 	
 	Written an maintained by:
@@ -42,30 +42,33 @@ f:SetScript("OnClick", function()
 end);
 f:Hide();
 
-local function OCES_OnRecipeButtonClicked(recipeButton, recipeInfo, mouseButton)
+local function OCES_RefreshButtons(self)
 	if C_TradeSkillUI.IsTradeSkillGuild() or C_TradeSkillUI.IsNPCCrafting() or C_TradeSkillUI.IsTradeSkillLinked() then
 		f:Hide();
-	elseif recipeInfo.tradeSkillInfo.alternateVerb then
-        local _, tradeSkillName = C_TradeSkillUI.GetTradeSkillLine();
-        if tradeSkillName == enchantingTradeSkillName then
-            f:Show();
-            local numCreateable = recipeInfo.tradeSkillInfo.numAvailable;
-            local numScrollsAvailable = GetItemCount(38682);
-            TradeSkillCreateScrollButton:SetText(scrollText.." ("..numScrollsAvailable..")");
-            if numScrollsAvailable == 0 then
-                numCreateable = 0;
-            end
-            if numCreateable > 0 then
-                TradeSkillCreateScrollButton:Enable();
+	else
+        local recipeInfo = self.selectedRecipeID and C_TradeSkillUI.GetRecipeInfo(self.selectedRecipeID);
+        if recipeInfo and recipeInfo.alternateVerb then
+            local tradeSkillName = select(2, C_TradeSkillUI.GetTradeSkillLine());
+            if tradeSkillName == enchantingTradeSkillName then
+                f:Show();
+                local numCreateable = recipeInfo.numAvailable;
+                local numScrollsAvailable = GetItemCount(38682);
+                TradeSkillCreateScrollButton:SetText(scrollText.." ("..numScrollsAvailable..")");
+                if numScrollsAvailable == 0 then
+                    numCreateable = 0;
+                end
+                if numCreateable > 0 then
+                    TradeSkillCreateScrollButton:Enable();
+                else
+                    TradeSkillCreateScrollButton:Disable();
+                end
             else
-                TradeSkillCreateScrollButton:Disable();
+                f:Hide();
             end
         else
             f:Hide();
         end
-	else
-		f:Hide();
-	end
+    end
 end
 
-hooksecurefunc(TradeSkillFrame.RecipeList, "OnRecipeButtonClicked", OCES_OnRecipeButtonClicked);
+hooksecurefunc(TradeSkillFrame.DetailsFrame, "RefreshButtons", OCES_RefreshButtons);
