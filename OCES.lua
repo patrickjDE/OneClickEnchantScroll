@@ -1,6 +1,6 @@
 --[[
-	OneClickEnchantScroll v7.2.0.0 (r20)
-	Copyright (c) 2010-2017, All rights reserved.
+	OneClickEnchantScroll v7.3.0.0 (r21)
+	Copyright (c) 2010-2018, All rights reserved.
 	
 	Written an maintained by:
 		Sará @ Festung der Stürme (EU-de) - Sara#2672 - sarafdswow@gmail.com
