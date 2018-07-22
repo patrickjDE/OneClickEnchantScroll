@@ -1,5 +1,5 @@
 --[[
-	OneClickEnchantScroll v7.3.0.0 (r21)
+	OneClickEnchantScroll v8.0.1.0 (r22)
 	Copyright (c) 2010-2018, All rights reserved.
 	
 	Written an maintained by:
@@ -12,7 +12,17 @@
 ]]
 
 local scrollText = "Scroll"; -- default english button text
-local enchantingTradeSkillName = GetSpellInfo(7411);
+local enchantingTradeSkillNames = {
+    [GetSpellInfo(264455)] = true, -- Classic
+    [GetSpellInfo(264460)] = true, -- Outland
+    [GetSpellInfo(264462)] = true, -- Northrend
+    [GetSpellInfo(264464)] = true, -- Cataclysm
+    [GetSpellInfo(264467)] = true, -- Pandaria
+    [GetSpellInfo(264469)] = true, -- Draenor
+    [GetSpellInfo(264471)] = true, -- Legion
+    [GetSpellInfo(264473)] = true, -- Kul Tiran (BfA Alliance)
+    [GetSpellInfo(265805)] = true, -- Zandalari (BfA Horde)
+}
 local loc = GetLocale();
 if loc == "deDE" then
 	scrollText = "Rolle";
@@ -465,6 +475,68 @@ local mapSpellToItem = {
     [228408] = 141910, -- Enchant Neck - Mark of the Ancient Priestess
     [228409] = 141910, -- Enchant Neck - Mark of the Ancient Priestess
     [228410] = 141910, -- Enchant Neck - Mark of the Ancient Priestess
+    -- Battle for Azeroth
+    [255070] = 153437, -- Gloves - Crafting (Alliance)
+    [267498] = 159471, -- Gloves - Crafting (Horde)
+    [255035] = 153430, -- Gloves - Herbalism (Alliance)
+    [267458] = 159464, -- Gloves - Herbalism (Horde)
+    [255040] = 153431, -- Gloves - Mining (Alliance)
+    [267482] = 159466, -- Gloves - Mining (Horde)
+    [255065] = 153434, -- Gloves - Skinning (Alliance)
+    [267486] = 159467, -- Gloves - Skinning (Horde)
+    [255066] = 153435, -- Gloves - Surveying (Alliance)
+    [267490] = 159468, -- Gloves - Surveying (Horde)
+    [255071] = 153438, -- Ring - Crit
+    [255086] = 153438,
+    [255094] = 153438,
+    [255072] = 153439, -- Ring - Haste
+    [255087] = 153439,
+    [255095] = 153439,
+    [255073] = 153440, -- Ring - Mastery
+    [255088] = 153440,
+    [255096] = 153440,
+    [255074] = 153441, -- Ring - Versatility
+    [255089] = 153441,
+    [255097] = 153441,
+    [255103] = 153476, -- Weapon - Coastal Surge
+    [255104] = 153476,
+    [255105] = 153476,
+    [255141] = 153480, -- Weapon - Gale-Force Striking
+    [255142] = 153480,
+    [255143] = 153480,
+    [255110] = 153478, -- Weapon - Siphoning
+    [255111] = 153478,
+    [255112] = 153478,
+    [255129] = 153479, -- Weapon - Torrent of Elements
+    [255130] = 153479,
+    [255131] = 153479,
+    [268907] = 159785, -- Weapon - Deadly Navigation
+    [268908] = 159785,
+    [268909] = 159785,
+    [268901] = 159787, -- Weapon - Masterful Navigation
+    [268902] = 159787,
+    [268903] = 159787,
+    [268894] = 159786, -- Weapon - Quick Navigation
+    [268895] = 159786,
+    [268897] = 159786,
+    [268913] = 159789, -- Weapon - Stalwart Navigation
+    [268914] = 159789,
+    [268915] = 159789,
+    [268852] = 159788, -- Weapon - Versatile Navigation
+    [268878] = 159788,
+    [268879] = 159788,
+    [255075] = 153442, -- Ring - Crit 2
+    [255090] = 153442,
+    [255098] = 153442,
+    [255076] = 153443, -- Ring - Haste 2
+    [255091] = 153443,
+    [255099] = 153443,
+    [255077] = 153444, -- Ring - Mastery 2
+    [255092] = 153444,
+    [255100] = 153444,
+    [255078] = 153445, -- Ring - Versatility 2
+    [255093] = 153445,
+    [255101] = 153445,
 }
 
 local f = CreateFrame("Button", "TradeSkillCreateScrollButton", TradeSkillFrame, "MagicButtonTemplate");
@@ -501,7 +573,7 @@ local function OCES_RefreshButtons(self)
         local recipeInfo = self.selectedRecipeID and C_TradeSkillUI.GetRecipeInfo(self.selectedRecipeID);
         if recipeInfo and recipeInfo.alternateVerb then
             local tradeSkillName = select(2, C_TradeSkillUI.GetTradeSkillLine());
-            if tradeSkillName == enchantingTradeSkillName then
+            if enchantingTradeSkillNames[tradeSkillName] then
                 f.itemID = mapSpellToItem[recipeInfo.recipeID];
                 if (not f.itemID) then
                     print(string.format("OCES: Missing scroll item for spellID %d. Please report this at Curse, WoWInterface or GitHub so it can be added in the next version.", recipeInfo.recipeID));
