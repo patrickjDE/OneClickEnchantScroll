@@ -1,9 +1,11 @@
 --[[
-	OneClickEnchantScroll v8.0.1.0 (r22)
+	OneClickEnchantScroll v8.0.1.1 (r23)
 	Copyright (c) 2010-2018, All rights reserved.
 	
 	Written an maintained by:
 		Sará @ Festung der Stürme (EU-de) - Sara#2672 - sarafdswow@gmail.com
+    Contributors:
+        https://github.com/fubaBfA
 		
 	You may use this AddOn free of monetary charge and modify this AddOn for personal use.
 	You may redistribute modified versions of this AddOn, as long as you credit the original author(s).
