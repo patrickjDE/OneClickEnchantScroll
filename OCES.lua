@@ -541,6 +541,11 @@ local mapSpellToItem = {
 
 local f = CreateFrame("Button", "TradeSkillCreateScrollButton", TradeSkillFrame, "MagicButtonTemplate");
 f:SetPoint("TOPRIGHT", TradeSkillFrame.DetailsFrame.CreateButton, "TOPLEFT");
+if IsAddOnLoaded("ElvUI") and ElvUI then
+	ElvUI[1]:GetModule('Skins'):HandleButton(f);
+	f:ClearAllPoints();
+	f:SetPoint("TOPRIGHT", TradeSkillFrame.DetailsFrame.CreateButton, "TOPLEFT", -1, 0);
+end
 f:SetScript("OnClick", function()
     if (IsShiftKeyDown() and f.itemID) then
         local activeEditBox = ChatEdit_GetActiveWindow();
