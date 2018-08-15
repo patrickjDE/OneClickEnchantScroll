@@ -10,7 +10,7 @@
 ## Notes-itIT: Crea pergamene di incantamento con un solo click
 ## Author: Sará.Festung der Stürme-EU <Sara#2672> <sarafdswow@gmail.com>
 
-## Version: 8.0.1.3
+## Version: 8.0.1.4
 ## LoadOnDemand: 1
 ## LoadWith: Blizzard_TradeSkillUI
 

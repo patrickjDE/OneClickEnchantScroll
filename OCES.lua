@@ -1,5 +1,5 @@
 --[[
-	OneClickEnchantScroll v8.0.1.3 (r25)
+	OneClickEnchantScroll v8.0.1.4 (r26)
 	Copyright (c) 2010-2018, All rights reserved.
 	
 	Written an maintained by:
@@ -480,7 +480,8 @@ local mapSpellToItem = {
     -- Battle for Azeroth
     [271433] = 160330, -- Enchant Bracers - Cooled Hearthing
     [271366] = 160328, -- Enchant Bracers - Safe Hearthing
-    [255068] = 159469, -- Enchant Bracers - Swift Hearthing
+    [255068] = 159469, -- Enchant Bracers - Swift Hearthing (Alliance)
+    [267495] = 153436, -- Enchant Bracers - Swift Hearthing (Horde)
     [255070] = 153437, -- Gloves - Crafting (Alliance)
     [267498] = 159471, -- Gloves - Crafting (Horde)
     [255035] = 153430, -- Gloves - Herbalism (Alliance)
