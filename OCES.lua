@@ -1,5 +1,5 @@
 --[[
-	OneClickEnchantScroll v8.0.1.2 (r24)
+	OneClickEnchantScroll v8.0.1.3 (r25)
 	Copyright (c) 2010-2018, All rights reserved.
 	
 	Written an maintained by:
