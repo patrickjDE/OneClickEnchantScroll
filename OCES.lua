@@ -14,17 +14,6 @@
 ]]
 
 local scrollText = "Scroll"; -- default english button text
-local enchantingTradeSkillNames = {
-    [GetSpellInfo(264455)] = true, -- Classic
-    [GetSpellInfo(264460)] = true, -- Outland
-    [GetSpellInfo(264462)] = true, -- Northrend
-    [GetSpellInfo(264464)] = true, -- Cataclysm
-    [GetSpellInfo(264467)] = true, -- Pandaria
-    [GetSpellInfo(264469)] = true, -- Draenor
-    [GetSpellInfo(264471)] = true, -- Legion
-    [GetSpellInfo(264473)] = true, -- Kul Tiran (BfA Alliance)
-    [GetSpellInfo(265805)] = true, -- Zandalari (BfA Horde)
-}
 local loc = GetLocale();
 if loc == "deDE" then
 	scrollText = "Rolle";
@@ -584,7 +573,7 @@ local function OCES_RefreshButtons(self)
         local recipeInfo = self.selectedRecipeID and C_TradeSkillUI.GetRecipeInfo(self.selectedRecipeID);
         if recipeInfo and recipeInfo.alternateVerb then
             local tradeSkillName = select(2, C_TradeSkillUI.GetTradeSkillLine());
-            if enchantingTradeSkillNames[tradeSkillName] then
+            if string.find(tradeSkillName, GetSpellInfo(7411)) then
                 f.itemID = mapSpellToItem[recipeInfo.recipeID];
                 if (not f.itemID) then
                     print(string.format("OCES: Missing scroll item for spellID %d. Please report this at Curse, WoWInterface or GitHub so it can be added in the next version.", recipeInfo.recipeID));
